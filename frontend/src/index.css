@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 38 5% 98%;
+    --foreground: 16 22% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 16 22% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 16 22% 25%;
+    --primary: 16 22% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 74 14% 48%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 14 16% 37%;
+    --accent: 26 17% 93%;
+    --accent-foreground: 16 22% 25%;
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 16 17% 82%;
+    --input: 16 17% 82%;
+    --ring: 16 22% 25%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-[#FAF9F6] text-[#5D4037];
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .font-data {
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+/* Print styles for nutrition label */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Ensure nutrition labels print properly */
+  .nutrition-label-container {
+    max-width: 100%;
+    margin: 20px 0;
+    page-break-inside: avoid;
+    page-break-after: always;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  /* Last item shouldn't have page break after */
+  .nutrition-label-container:last-of-type {
+    page-break-after: auto;
+  }
+  
+  /* Hide background images */
+  div[style*="background-image"] {
+    background-image: none !important;
+  }
+  
+  /* Ensure black borders print */
+  .border-black,
+  .border-b-black,
+  .border-t-black {
+    border-color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
